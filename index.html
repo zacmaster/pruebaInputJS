@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <input id="campo" type="text">
+    <script>
+        
+    </script>
+</body>
+</html>
+
+<script>
+
+    	window.jQuery.fn.ForceNumericOnly =
+		function () {
+		return this.each(function () {
+			$(this).on("input change paste", function (event) {
+				var formControl = $(event.target);
+				// Solo permito numeros y signo negativo
+				var str = formControl.val().replace(/[^0-9-]+/g, "");
+				// Solo permito signo negativo al principio 
+				if ( str.length > 0 && str.substring(str.length - 1) == '-' ) {
+					if ( str != '0-' ) {
+						str = str.substring(0, str.length - 1);	
+					} else {
+						str = '-';
+					}
+				}
+				formControl.val(str);
+				
+			});
+		});
+	};
+
+    $('#campo').ForceNumericOnly();
+
+
+</script>
